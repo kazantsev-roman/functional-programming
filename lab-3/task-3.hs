@@ -11,7 +11,7 @@ unique (x : xs) = x : unique (exclude x xs)
 
 myunion :: Eq a => [a] -> [a] -> [a]
 myunion [] ys = unique ys
-myunion xs [] = xs
+myunion xs [] = unique xs
 myunion (x : xs) ys = x : myunion (exclude x xs) (exclude x ys)
 
 main = do
