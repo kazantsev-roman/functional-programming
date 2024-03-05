@@ -18,13 +18,19 @@ person_with_four_hobbies(Person) :-
   likes(Person, Hobby2),
   likes(Person, Hobby3),
   likes(Person, Hobby4),
-  Hobby1 \= Hobby2, Hobby1 \= Hobby3, Hobby1 \= Hobby4,
-  Hobby2 \= Hobby3, Hobby2 \= Hobby4,
-  Hobby3 \= Hobby4.
+  different(Hobby1, Hobby2),
+  different(Hobby1, Hobby3),
+  different(Hobby1, Hobby4),
+  different(Hobby2, Hobby3),
+  different(Hobby2, Hobby4),
+  different(Hobby3, Hobby4).
 
 % 2.c Составить вопрос и найти тех, у кого одинаковые хобби.
 
 same_hobby(Person1, Person2, Hobby) :-
   likes(Person1, Hobby),
   likes(Person2, Hobby),
-  Person1 \= Person2.
+  different(Person1, Person2).
+
+different(X, Y) :-
+    X \= Y.
